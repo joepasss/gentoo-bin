@@ -12,26 +12,14 @@ RUN emerge-webrsync
 RUN /scripts/write_flags.sh
 RUN mkdir -p /run/lock
 
-FROM deps AS cmake_build
+FROM deps AS build
 
 RUN emerge -v --buildpkg \
-	dev-build/cmake
-
-FROM cmake_build AS qemu_build
-
-RUN emerge -v --buildpkg \
-	app-emulation/qemu
-
-FROM qemu_build AS libvirt_build
-
-RUN emerge -v --buildpkg \
-	app-emulation/libvirt
-
-FROM libvirt_build AS docker_build
-
-RUN emerge -v --buildpkg \
+	dev-build/cmake \
+	app-emulation/qemu \
+	app-emulation/libvirt \
 	app-containers/docker \
 	net-libs/libpcap
 
 FROM scratch AS export
-COPY --from=cmake_build /var/cache/binpkgs /binpkgs
+COPY --from=build /var/cache/binpkgs /binpkgs
