@@ -17,7 +17,7 @@ RUN mkdir -p /run/lock
 RUN emerge -v --buildpkg=y dev-build/cmake
 
 FROM scratch AS export
-COPY --from=cmake_build /var/cache/binpkgs /output/packages
+COPY --from=cmake_build /var/cache/binpkgs /binpkgs
 
 CMD [ "/bin/bash" ]
 
