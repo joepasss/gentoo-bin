@@ -10,6 +10,9 @@ COPY ./scripts/write_flags.sh /scripts/write_flags.sh
 RUN emerge-webrsync
 
 RUN /scripts/write_flags.sh
+COPY ./package.use/gns3 /etc/portage/package.use/gns3
+COPY ./profile/package.provided /etc/portage/profile/package.provided
+
 RUN mkdir -p /run/lock
 
 FROM deps AS build
