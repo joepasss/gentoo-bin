@@ -17,7 +17,7 @@ RUN mkdir -p /run/lock
 
 FROM deps AS build
 
-RUN emerge -v --buildpkg \
+RUN emerge -v --buildpkgonly \
 	dev-build/cmake \
 	app-emulation/qemu \
 	app-emulation/libvirt \
