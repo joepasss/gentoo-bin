@@ -16,7 +16,4 @@ fi
 docker run \
   -it \
   --name "$CONTAINER_NAME" \
-  --net=host --privileged \
-  -e BRIDGE_ADDRESS="172.21.1.1/24" \
-  -v "$HOME/gns3-server:/data" \
   "$IMAGE_NAME"
