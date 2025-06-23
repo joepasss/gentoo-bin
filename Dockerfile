@@ -24,19 +24,12 @@ COPY ./profile/package.provided /etc/portage/profile/package.provided
 COPY ./profile/package.provided "$CROSSROOT/etc/portage/profile/package.provided"
 
 RUN mkdir -p /run/lock
-
-RUN emerge \
-	-gv --onlydeps --oneshot \
-	dev-lang/go-bootstrap
-
-RUN emerge-aarch64-unknown-linux-gnu \
-	-gv --onlydeps --oneshot \
-	dev-lang/go-bootstrap
+RUN getuto
 
 FROM deps AS build
 
 RUN emerge \
-	-v --buildpkg \
+	-vg --buildpkg \
 	dev-build/cmake \
 	app-emulation/qemu \
 	app-emulation/libvirt \
@@ -44,7 +37,7 @@ RUN emerge \
 	net-libs/libpcap
 
 RUN emerge-aarch64-unknown-linux-gnu \
-	-v --buildpkg \
+	-vg --buildpkg \
 	dev-build/cmake \
 	app-emulation/qemu \
 	app-emulation/libvirt \
