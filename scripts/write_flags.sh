@@ -3,6 +3,7 @@
 set -euo pipefail
 
 IS_PROD="${IS_PROD:-false}"
+MAKECONF_PATH="${1:-/etc/portage/make.conf}"
 
 if [[ "$IS_PROD" == "true" ]]; then
   MAKEJOBS="1"
@@ -18,11 +19,11 @@ fi
   echo 'QEMU_USER_TARGETS="i386 x86_64"'
   echo 'QEMU_SOFTMMU_TARGETS="i386 x86_64"'
 
-  echo 'FEATURES="-test -sandbox nodoc noinfo noman buildpkg -binpkg-signing"'
+  echo 'FEATURES="-test -sandbox -ipc-sandbox -network-sandbox -pid-sandbox nodoc noinfo noman buildpkg -binpkg-signing"'
   echo 'INSTALL_MASK="/usr/share/man /usr/share/doc /usr/share/info /usr/share/gtk-doc /usr/share/locale /usr/lib/locale"'
 
   echo 'INPUT_DEVICES=""'
   echo 'VIDEO_CARDS=""'
   echo 'ACCEPT_LICENSE="*"'
   echo 'PKGDIR="/var/cache/binpkgs"'
-} >>/etc/portage/make.conf
+} >>"$MAKECONF_PATH"

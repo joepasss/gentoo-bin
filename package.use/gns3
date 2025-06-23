@@ -6,10 +6,9 @@ app-containers/docker -btrfs
 app-containers/containerd cri
 app-containers/containerd -btrfs -device-mapper
 
-app-emulation/qemu usb
 app-emulation/qemu -accessibility -bpf -capstone -fuse -glusterfs -nfs -rbd -iscsi -multipath -jpeg -png -keyutils -systemtap -debug -test -plugins -sdl -sdl-image -gtk -virgl -vte -spice -wayland -X -vde -xattr -xdp -xen -virtfs -ssh
 
-net-dns/dnsmasq script
+net-dns/dnsmasq script ipv6
 net-dns/dnsmasq -auth-dns -conntrack -dhcp-tools -dnssec -id -libidn2 -loop -nettlehash
 
 sys-apps/util-linux -su
@@ -26,10 +25,13 @@ sys-fs/e2fsprogs -tools
 sys-apps/iputils -arping
 dev-libs/elfutils -bzip2 -utils
 sys-apps/file -bzip2
-dev-libs/libxlta -crypt
+dev-libs/libxcrypt -crypt
 app-containers/runc -kmem
 app-arch/libarchive -bzip2 -e2fsprogs -iconv -lzma -zstd
 dev-build/cmake -ncurses
 net-libs/gnutls -tls-heartbeat
 sys-apps/systemd-utils -kmod tmpfiles
 dev-python/pillow -jpeg -zlib
+net-misc/curl ssl
+dev-libs/libpcre2 unicode
+
