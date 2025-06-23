@@ -23,13 +23,6 @@ COPY ./package.use/arm64_gns "$CROSSROOT/etc/portage/package.use/arm64_gns"
 COPY ./profile/package.provided /etc/portage/profile/package.provided
 COPY ./profile/package.provided "$CROSSROOT/etc/portage/profile/package.provided"
 
-RUN emerge -v \
-	sys-devel/crossdev \
-	app-eselect/eselect-repository
-
-RUN eselect repository create crossdev
-RUN crossdev --target aarch64-unknown-linux-gnu
-
 RUN mkdir -p /run/lock
 
 RUN emerge \
