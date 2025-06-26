@@ -15,7 +15,10 @@
 
 FEATURES="getbinpkg"
 
-PORTAGE_BINHOST="https://joepasss.github.io/gentoo-bin/packages/binpkgs"
+# amd64 binary host
+PORTAGE_BINHOST="https://joepasss.github.io/gentoo-bin/packages/amd64"
+# arm64 binary host
+PORTAGE_BINHOST="https://joepasss.github.io/gentoo-bin/packages/aarch64"
 
 # ... more configurations ...
 ```

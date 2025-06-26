@@ -71,5 +71,6 @@ RUN emerge-aarch64-unknown-linux-gnu \
 	net-libs/libpcap
 
 FROM scratch AS export
-COPY --from=build /var/cache/binpkgs /packages/amd64
-COPY --from=build /usr/aarch64-unknown-linux-gnu/var/cache/binpkgs /packages/aarch64
+
+COPY --from=build /var/cache/binpkgs /amd64
+COPY --from=build /usr/aarch64-unknown-linux-gnu/var/cache/binpkgs /aarch64
