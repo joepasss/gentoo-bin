@@ -55,6 +55,20 @@ RUN getuto
 
 FROM deps AS build
 
+### build tool binary build
+RUN emerge \
+	-v --buildpkg \
+	dev-build/cmake \
+	dev-build/meson \
+	dev-build/ninja
+
+RUN emerge-aarch64-unknown-linux-gnu \
+	-v --buildpkg \
+	dev-build/cmake \
+	dev-build/meson \
+	dev-build/ninja
+
+### gns3 dependencies binary build
 RUN emerge \
 	-v --buildpkg \
 	acct-user/tss \
@@ -62,7 +76,7 @@ RUN emerge \
 	app-emulation/qemu \
 	app-emulation/libvirt \
 	app-containers/docker \
-	net-libs/libpcap
+	net-libs/libpcap 
 
 RUN emerge-aarch64-unknown-linux-gnu \
 	-v --buildpkg \
